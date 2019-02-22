@@ -7,7 +7,12 @@ package servlets;
  */
 
 import beans.User;
+import dao.DAOFactory;
+import dao.UserDao;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +35,17 @@ public class Test extends HttpServlet {
 	/* Stockage du message et du bean dans l'objet request */
 	request.setAttribute( "test", message );
 	request.setAttribute( "bean", premierBean );
+
+        //Test dao
+        UserDao user = new UserDao();
+        try {
+            user.find();
+        } catch (RuntimeException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
 		
 	/* Transmission de la paire d'objets request/response à notre JSP */
 	this.getServletContext().getRequestDispatcher( "/index.jsp" ).forward( request, response );
