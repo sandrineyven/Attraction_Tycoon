@@ -36,15 +36,6 @@ public class Test extends HttpServlet {
 	request.setAttribute( "test", message );
 	request.setAttribute( "bean", premierBean );
 
-        //Test dao
-        UserDao user = new UserDao();
-        try {
-            user.find();
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
 		
 	/* Transmission de la paire d'objets request/response à notre JSP */
