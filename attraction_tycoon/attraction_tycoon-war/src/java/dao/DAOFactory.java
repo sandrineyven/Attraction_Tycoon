@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -19,7 +20,7 @@ public class DAOFactory {
     private String              username;
     private String              password;
 
-    public DAOFactory( String url, String username, String password ) {
+    DAOFactory( String url, String username, String password ) {
         this.url = url;
         this.username = username;
         this.password = password;
@@ -29,7 +30,7 @@ public class DAOFactory {
      * Méthode chargée de récupérer les informations de connexion à la base de
      * données, charger le driver JDBC et retourner une instance de la Factory
      */
-    public static DAOFactory getInstance() throws RuntimeException  {
+    public static DAOFactory getInstance() throws DAOConfigurationException {
         Properties properties = new Properties();
         String url;
         String driver;
@@ -40,7 +41,7 @@ public class DAOFactory {
         InputStream fichierProperties = classLoader.getResourceAsStream( FICHIER_PROPERTIES );
 
         if ( fichierProperties == null ) {
-            throw new RuntimeException ( "Le fichier properties " + FICHIER_PROPERTIES + " est introuvable." );
+            throw new DAOConfigurationException( "Le fichier properties " + FICHIER_PROPERTIES + " est introuvable." );
         }
 
         try {
@@ -50,13 +51,13 @@ public class DAOFactory {
             nomUtilisateur = properties.getProperty( PROPERTY_NOM_UTILISATEUR );
             motDePasse = properties.getProperty( PROPERTY_MOT_DE_PASSE );
         } catch ( IOException e ) {
-            throw new RuntimeException ( "Impossible de charger le fichier properties " + FICHIER_PROPERTIES, e );
+            throw new DAOConfigurationException( "Impossible de charger le fichier properties " + FICHIER_PROPERTIES, e );
         }
 
         try {
             Class.forName( driver );
         } catch ( ClassNotFoundException e ) {
-            throw new RuntimeException ( "Le driver est introuvable dans le classpath.", e );
+            throw new DAOConfigurationException( "Le driver est introuvable dans le classpath.", e );
         }
 
         DAOFactory instance = new DAOFactory( url, nomUtilisateur, motDePasse );
@@ -72,7 +73,7 @@ public class DAOFactory {
      * Méthodes de récupération de l'implémentation des différents DAO (un seul
      * pour le moment)
      */
-    public UserDao getUserDao() {
-        return new UserDao( this );
+    public UserDao getUtilisateurDao() {
+        return new UserDaoImpl( this );
     }
 }
