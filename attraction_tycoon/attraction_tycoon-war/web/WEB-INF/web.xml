@@ -14,8 +14,8 @@
         </session-timeout>
     </session-config>
     <servlet>
-        <servlet-name>Test</servlet-name>
-        <servlet-class>servlets.Test</servlet-class>
+        <servlet-name>AccueilServlet</servlet-name>
+        <servlet-class>servlets.AccueilServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -30,7 +30,7 @@
         <servlet-class>servlets.InscriptionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Test</servlet-name>
+        <servlet-name>AccueilServlet</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

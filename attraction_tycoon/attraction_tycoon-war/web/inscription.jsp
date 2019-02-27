@@ -1,18 +1,10 @@
 <%-- 
     Document   : inscription
-    Created on : 27 fÃ©vr. 2019, 11:39:05
+    Created on : 27 févr. 2019, 11:39:05
     Author     : Sandrine
 --%>
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Inscription</title>
-        <link type="text/css" rel="stylesheet" href="form.css" />
-    </head>
-    <body>
+<%@ include file = "template/header.jsp" %>
+
         <form method="post" action="inscription">
             <fieldset>
                 <legend>Inscription</legend>
@@ -44,5 +36,5 @@
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
             </fieldset>
         </form>
-    </body>
-</html>
+                
+<%@ include file = "template/footer.jsp" %>

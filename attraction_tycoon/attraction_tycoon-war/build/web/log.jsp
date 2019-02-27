@@ -1,19 +1,11 @@
 <%-- 
     Document   : log
-    Created on : 22 fÃ©vr. 2019, 15:13:28
+    Created on : 22 févr. 2019, 15:13:28
     Author     : Sandrine
 --%>
 
-<%@ page pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Connexion</title>
-        <link type="text/css" rel="stylesheet" href="form.css" />
-    </head>
-    <body>
+<%@ include file = "template/header.jsp" %>
+
         <form method="post" action="log">
             <fieldset>
                 <legend>Connexion</legend>
@@ -33,10 +25,10 @@
                 <br />
 
                 <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
-                <%-- VÃ©rification de la prÃ©sence d'un objet utilisateur en session --%>
+                <%-- Vérification de la présence d'un objet utilisateur en session --%>
                 <c:if test="${!empty sessionScope.sessionUser}">
                     <%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
-                    <p class="succes">Vous Ãªtes connectÃ©(e) avec l'adresse : ${sessionScope.sessionUser.email}</p>
+                    <p class="succes">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUser.email}</p>
                 </c:if>
             </fieldset>
         </form>
@@ -44,6 +36,6 @@
             <input type="submit" value="Inscription" class="sansLabel" />
             <br />
         </form>
-    </body>
-</html>
+
+<%@ include file = "template/footer.jsp" %>
 
