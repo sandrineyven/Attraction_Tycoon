@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author gigabyte
  */
-class DAOException extends Exception {
+public class DAOException extends Exception {
 
    /*
      * Constructeurs

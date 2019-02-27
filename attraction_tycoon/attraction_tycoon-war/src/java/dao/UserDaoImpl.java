@@ -18,8 +18,8 @@ import java.sql.SQLException;
  */
 public class UserDaoImpl implements UserDao {
 
-    private static final String SQL_SELECT_WITH_EMAIL = "SELECT id_user, email, login, password FROM Utilisateur WHERE email = ?";
-    private static final String SQL_INSERT = "INSERT INTO Utilisateur (email, password, login) VALUES (?, ?, ?)";
+    private static final String SQL_SELECT_WITH_EMAIL = "SELECT id_user, email, login, password FROM user WHERE email = ?";
+    private static final String SQL_INSERT = "INSERT INTO user (email, password, login) VALUES (?, ?, ?)";
     private DAOFactory daoFactory;
 
     public UserDaoImpl(DAOFactory daoFactory) {
@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
      * @throws DAOException Add user to the current database
      */
     @Override
-    public void create(User utilisateur) throws IllegalArgumentException, DAOException {
+    public void create(User user) throws IllegalArgumentException, DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet valeursAutoGenerees = null;
@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao {
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true, utilisateur.getEmail(), utilisateur.getPassword(), utilisateur.getLogin());
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true, user.getEmail(), user.getPassword(), user.getLogin());
             int statut = preparedStatement.executeUpdate();
             /* Analyse du statut retourné par la requête d'insertion */
             if (statut == 0) {
@@ -52,7 +52,7 @@ public class UserDaoImpl implements UserDao {
             valeursAutoGenerees = preparedStatement.getGeneratedKeys();
             if (valeursAutoGenerees.next()) {
                 /* Puis initialisation de la propriété id du bean Utilisateur avec sa valeur */
-                utilisateur.setId(valeursAutoGenerees.getLong(1));
+                user.setId(valeursAutoGenerees.getLong(1));
             } else {
                 throw new DAOException("Echec to create user in db.");
             }
@@ -75,7 +75,7 @@ public class UserDaoImpl implements UserDao {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        User utilisateur = null;
+        User user = null;
 
         try {
             /* Récupération d'une connexion depuis la Factory */
@@ -84,7 +84,7 @@ public class UserDaoImpl implements UserDao {
             resultSet = preparedStatement.executeQuery();
             /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
             if (resultSet.next()) {
-                utilisateur = map(resultSet);
+                user = map(resultSet);
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -92,19 +92,19 @@ public class UserDaoImpl implements UserDao {
             fermeturesSilencieuses(resultSet, preparedStatement, connexion);
         }
 
-        return utilisateur;
+        return user;
     }
 
     /*
  * map user
      */
     private static User map(ResultSet resultSet) throws SQLException {
-        User utilisateur = new User();
-        utilisateur.setId(resultSet.getLong("id_user"));
-        utilisateur.setEmail(resultSet.getString("email"));
-        utilisateur.setPassword(resultSet.getString("password"));
-        utilisateur.setLogin(resultSet.getString("login"));
-        return utilisateur;
+        User user = new User();
+        user.setId(resultSet.getLong("id_user"));
+        user.setEmail(resultSet.getString("email"));
+        user.setPassword(resultSet.getString("password"));
+        user.setLogin(resultSet.getString("login"));
+        return user;
     }
 
 }

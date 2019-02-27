@@ -1,4 +1,9 @@
 /attraction_tycoon/nbproject/private/
 /attraction_tycoon/attraction_tycoon-war/nbproject/private/
 /attraction_tycoon/attraction_tycoon-ejb/nbproject/private/
+<<<<<<< Updated upstream
 attraction_tycoon/build/lib/mysql-connector-java-5\.1\.23-bin\.jar
+=======
+/attraction_tycoon/attraction_tycoon-ejb/build/
+/attraction_tycoon/attraction_tycoon-ejb/dist/
+>>>>>>> Stashed changes

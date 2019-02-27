@@ -32,4 +32,5 @@ public class InitialisationDaoFactory implements ServletContextListener{
     public void contextDestroyed( ServletContextEvent event ) {
         /* Rien à réaliser lors de la fermeture de l'application... */
     }
+
 }
