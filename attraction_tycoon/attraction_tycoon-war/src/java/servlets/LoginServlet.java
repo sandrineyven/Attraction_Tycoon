@@ -23,7 +23,6 @@ public class LoginServlet extends HttpServlet {
     public static final String ATT_FORM = "form";
     public static final String ATT_SESSION_USER = "sessionUser";
     public static final String VUE = "/log.jsp";
-    public static final String VUE_POST = "/index.jsp";
     private UserDao userDao;
 
     @Override
@@ -67,7 +66,10 @@ public class LoginServlet extends HttpServlet {
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute(ATT_FORM, form);
         request.setAttribute(ATT_USER, utilisateur);
-
-        response.sendRedirect("index.jsp");
+        if (form.getErreurs().isEmpty()) {
+            response.sendRedirect("index.jsp");
+        } else {
+            this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        }
     }
 }
