@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
  */
 public class DeconnexionServlet extends HttpServlet {
 
-    public static final String VUE = "/index";
-
     @Override
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Récupération et destruction de la session en cours */
@@ -22,6 +20,6 @@ public class DeconnexionServlet extends HttpServlet {
         session.invalidate();
 
         /* Affichage de la page de connexion */
-        this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
+        response.sendRedirect("index.jsp");
     }
 }

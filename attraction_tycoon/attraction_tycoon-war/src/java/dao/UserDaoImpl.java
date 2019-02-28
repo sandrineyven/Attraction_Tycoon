@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -20,7 +21,8 @@ public class UserDaoImpl implements UserDao {
 
     private static final String SQL_SELECT_WITH_EMAIL = "SELECT id_user, email, login, password FROM user WHERE email = ?";
     private static final String SQL_INSERT = "INSERT INTO user (email, password, login) VALUES (?, ?, ?)";
-    private DAOFactory daoFactory;
+    private static final String SQL_SELECT_ALL = "SELECT * FROM user";
+    private final DAOFactory daoFactory;
 
     public UserDaoImpl(DAOFactory daoFactory) {
         this.daoFactory = daoFactory;
@@ -29,7 +31,6 @@ public class UserDaoImpl implements UserDao {
     /**
      *
      * @param user
-     * @return void
      * @throws IllegalArgumentException
      * @throws DAOException Add user to the current database
      */
@@ -65,13 +66,13 @@ public class UserDaoImpl implements UserDao {
 
     /**
      *
-     * @param string mail
+     * @param email
      * @return User
      * @throws DAOException Add user to the current database Search an User
      * thanks to his mail adress
      */
     @Override
-    public User find(String email) throws DAOException {
+    public User findByEmail(String email) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -93,6 +94,32 @@ public class UserDaoImpl implements UserDao {
         }
 
         return user;
+    }
+
+    @Override
+    public List<User> findAll() throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<User> users = null;
+
+        try {
+            /* Récupération d'une connexion depuis la Factory */
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_SELECT_ALL, false);
+            resultSet = preparedStatement.executeQuery();
+            /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
+            if (resultSet.next()) {
+               User user = map(resultSet);
+               users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(resultSet, preparedStatement, connexion);
+        }
+
+        return users;
     }
 
     /*

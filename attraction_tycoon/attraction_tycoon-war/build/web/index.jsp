@@ -5,10 +5,13 @@
 --%>
 
 <%@ include file = "template/header.jsp" %>
+        <div align="left">
+            <c:if test="${empty sessionScope.sessionUser}">
+                <p><a href="<c:url value="/log"/>">Connexion</a>
+                    <a href="<c:url value="/inscription"/>">Inscription</a></p>
+                </c:if>
+        </div>
 
-        <form method="get" action="<c:url value="/log" />">
-            <input type="submit" value="Connexion" class="sansLabel" />
-            <br />
-        </form>
+<p>PAGE ACCUEIL</p>
         
 <%@ include file = "template/footer.jsp" %>

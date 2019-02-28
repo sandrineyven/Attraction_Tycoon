@@ -5,8 +5,11 @@
  */
 package dao;
 import beans.User;
+import java.util.List;
 
 public interface UserDao {
     void create( User utilisateur ) throws DAOException;
-    User find( String email ) throws DAOException;
+    User findByEmail( String email ) throws DAOException;
+    List<User> findAll() throws DAOException;
+    
 }

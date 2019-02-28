@@ -1,6 +1,7 @@
 package servlets;
 
 import beans.User;
+import dao.DAOException;
 import dao.DAOFactory;
 import dao.UserDao;
 import java.io.IOException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import forms.LoginForm;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginServlet extends HttpServlet {
 
@@ -20,6 +23,7 @@ public class LoginServlet extends HttpServlet {
     public static final String ATT_FORM = "form";
     public static final String ATT_SESSION_USER = "sessionUser";
     public static final String VUE = "/log.jsp";
+    public static final String VUE_POST = "/index.jsp";
     private UserDao userDao;
 
     @Override
@@ -40,7 +44,12 @@ public class LoginServlet extends HttpServlet {
         LoginForm form = new LoginForm(userDao);
 
         /* Traitement de la requête et récupération du bean en résultant */
-        User utilisateur = form.connectUser(request);
+        User utilisateur = null;
+        try {
+            utilisateur = form.connectUser(request);
+        } catch (DAOException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         /* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
@@ -59,6 +68,6 @@ public class LoginServlet extends HttpServlet {
         request.setAttribute(ATT_FORM, form);
         request.setAttribute(ATT_USER, utilisateur);
 
-        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        response.sendRedirect("index.jsp");
     }
 }

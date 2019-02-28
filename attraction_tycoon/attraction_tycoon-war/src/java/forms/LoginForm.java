@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import beans.User;
+import dao.DAOException;
 import dao.UserDao;
 
 public final class LoginForm {
@@ -33,7 +34,7 @@ public final class LoginForm {
         this.userDao = utilisateurDao;
     }
 
-    public User connectUser(HttpServletRequest request) {
+    public User connectUser(HttpServletRequest request) throws DAOException {
         /* Récupération des champs du formulaire */
         String email = getValeurChamp(request, CHAMP_EMAIL);
         String motDePasse = getValeurChamp(request, CHAMP_PASS);
@@ -54,7 +55,15 @@ public final class LoginForm {
         } catch (Exception e) {
             setErreur(CHAMP_PASS, e.getMessage());
         }
+        
         utilisateur.setPassword(motDePasse);
+        
+        try {
+            checkConnexion(motDePasse,utilisateur);
+        } catch (Exception e) {
+            setErreur(CHAMP_PASS, e.getMessage());
+        }
+
 
         /* Initialisation du résultat global de la validation. */
         if (erreurs.isEmpty()) {
@@ -73,7 +82,7 @@ public final class LoginForm {
         if (email == null && !email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
             throw new Exception("Merci de saisir une adresse mail valide.");
         }
-        if(userDao.find(email) == null){
+        if (userDao.findByEmail(email) == null) {
             throw new Exception("Veuillez vous inscrire.");
         }
     }
@@ -88,6 +97,17 @@ public final class LoginForm {
             }
         } else {
             throw new Exception("Merci de saisir votre mot de passe.");
+        }
+    }
+
+    /**
+     * Valide l'adresse email saisie.
+     */
+    private void checkConnexion(String pw, User user) throws Exception {
+
+        String pwbd = userDao.findByEmail(user.getEmail()).getPassword();
+        if (!pw.equals(pwbd) ){
+            throw new Exception("Veuillez resaisir votre mot de passe.");
         }
     }
 
