@@ -1,11 +1,11 @@
 <%-- 
-    Document   : header
-    Created on : 27 févr. 2019, 15:18:53
-    Author     : Sandrine
+    Document   : global
+    Created on : 28 févr. 2019, 10:49:25
+    Author     : gigabyte
 --%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 
 <%-- Bootstrap integration --%>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,22 +14,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 
-<html>
-   
-     <%@include  file="../html/navbar.html" %>
+<%-- Doesn't work !! --%>
+<link rel="stylesheet" href=".../css/style.css">
 
-    
-        <div align="right">
-            <c:if test="${!empty sessionScope.sessionUser}">
-                <p>Vous êtes connecté(e) avec l'adresse :</p>
-                <p>${sessionScope.sessionUser.email}</p>
-                <p><a href="<c:url value="/deconnexion"/>">Deconnexion</a></p>
-            </c:if>
-        </div>
+<style>
 
-    <%--    <div align="left">
-            <p><a href="<c:url value="/"/>">Accueil</a></p>
-    --%>
-        </div>
+    body {
+        background-color: #ffffff;
+        background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
+    }
+
+    .mainbody {
+        background: white;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 5px 10px;
+    }
+
+
+
+
+</style>
+
+<body>
+        <div class="container" >
+            <div class="mainbody">
+
+                </body>
 
 

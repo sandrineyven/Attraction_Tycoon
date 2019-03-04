@@ -53,3 +53,16 @@ form input.sansLabel {
     font-style: italic;
     color: #E8A22B;
 }
+
+ /* Style généraux -------------------------------------------------------------- */
+ 
+ body {
+     background-color: #ffffff;
+     background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
+ }
+ 
+ .test {
+     background-color: #ffffff;
+     background-image: url("https://www.transparenttextures.com/patterns/black-thread-light.png");
+ }
+ 
