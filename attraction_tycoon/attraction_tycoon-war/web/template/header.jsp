@@ -44,18 +44,19 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<c:url value="/deconnexion"/>">Deconnexion</a>
                             </li>
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Menu
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Staff</a>
-                                    <a class="dropdown-item" href="<c:url value="/shops"/>">Boutique</a>
-                                    <a class="dropdown-item" href="#">Maneges</a>
-                                </div>
-                            </li>
                         </c:if>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Menu
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Staff</a>
+                                <a class="dropdown-item" href="<c:url value="/shops"/>">Shops</a>
+                                <a class="dropdown-item" href="#">Maneges</a>
+                                <a class="dropdown-item" href="#">Zone</a>
+                            </div>
+                        </li>
+                        <%--                </c:if>  --%>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -65,19 +66,3 @@
             </nav>
         </div>
     </div>
-
-
-    <%--   <div align="right">
-           <c:if test="${!empty sessionScope.sessionUser}">
-               <p>Vous êtes connecté(e) avec l'adresse :</p>
-               <p>${sessionScope.sessionUser.email}</p>
-               <p><a href="<c:url value="/deconnexion"/>">Deconnexion</a></p>
-           </c:if>
-       </div>
-
-        <div align="left">
-            <p><a href="<c:url value="/"/>">Accueil</a></p>
-   
-        </div>
-    --%>
-
