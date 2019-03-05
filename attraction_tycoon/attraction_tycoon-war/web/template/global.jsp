@@ -28,7 +28,6 @@
         background: white;
         padding: 20px;
         box-sizing: border-box;
-        box-shadow: 5px 10px;
     }
 
 
