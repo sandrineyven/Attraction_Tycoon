@@ -14,6 +14,35 @@
 
 <%@ include file = "template/header.jsp" %>
 
+<div class="container">
 
+    <a href="<c:url value="/createShop"/>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">+</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Type</th>
+                <th scope="col">Zone</th>
+            </tr>
+        </thead>
+        <form method="get" action="affichageShop">
+            <tbody>
+
+                <c:forEach var="shop" items="${shops}">
+                    <tr>
+                        <td><c:out value="${shop.id}" /></td>
+                        <td><c:out value="${shop.name}" /></td>
+                        <td><c:out value="${shop.type}" /></td>
+                        <td><c:out value="${shop.zone}" /></td>
+                    </tr>
+                </c:forEach>
+
+            </tbody>
+        </form>
+    </table>
+
+</div>
 
 <%@ include file = "template/footer.jsp" %>

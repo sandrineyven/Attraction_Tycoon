@@ -14,7 +14,7 @@ public class Shop implements Serializable {
     
     private String type;
     
-   // private Zone zone;
+   private int zone;
 
     public Shop() {
     }
@@ -50,6 +50,14 @@ public class Shop implements Serializable {
 //    public void setZone(Zone zone) {
 //        this.zone = zone;
 //    }
+
+    public int getZone() {
+        return zone;
+    }
+
+    public void setZone(int zone) {
+        this.zone = zone;
+    }
 
     
 }

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ import java.util.List;
 public class ShopDaoImpl implements ShopDao{
 
  private static final String SQL_SELECT_WITH_NAME = "SELECT id_shop, email, login, password FROM shop WHERE name = ?";
-    private static final String SQL_INSERT = "INSERT INTO shop (name, type) VALUES (?, ?)";
+    private static final String SQL_INSERT = "INSERT INTO shop (name, type, id_zone) VALUES (?, ?, ?)";
     private static final String SQL_SELECT_ALL = "SELECT * FROM shop";
     private final DAOFactory daoFactory;
 
@@ -44,7 +45,7 @@ public class ShopDaoImpl implements ShopDao{
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true, shop.getName(), shop.getType());
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true, shop.getName(), shop.getType(),shop.getZone());
             int statut = preparedStatement.executeUpdate();
             /* Analyse du statut retourné par la requête d'insertion */
             if (statut == 0) {
@@ -102,7 +103,7 @@ public class ShopDaoImpl implements ShopDao{
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<Shop> shops = null;
+        List<Shop> shops = new ArrayList<>();
 
         try {
             /* Récupération d'une connexion depuis la Factory */
@@ -110,9 +111,12 @@ public class ShopDaoImpl implements ShopDao{
             preparedStatement = initialisationRequetePreparee(connexion, SQL_SELECT_ALL, false);
             resultSet = preparedStatement.executeQuery();
             /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
-            if (resultSet.next()) {
+            
+            while (resultSet.next()) {
                Shop shop = map(resultSet);
+               if(shop != null){
                shops.add(shop);
+               }
             }
         } catch (SQLException e) {
             throw new DAOException(e);
@@ -129,6 +133,7 @@ public class ShopDaoImpl implements ShopDao{
         shop.setId(resultSet.getLong("id_shop"));
         shop.setName(resultSet.getString("name"));
         shop.setType(resultSet.getString("type"));
+        shop.setZone(resultSet.getInt("id_zone"));
         return shop;
     }
 }

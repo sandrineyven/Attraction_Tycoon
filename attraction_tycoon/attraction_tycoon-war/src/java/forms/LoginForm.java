@@ -100,9 +100,6 @@ public final class LoginForm {
         }
     }
 
-    /**
-     * Valide l'adresse email saisie.
-     */
     private void checkConnexion(String pw, User user) throws Exception {
 
         String pwbd = userDao.findByEmail(user.getEmail()).getPassword();

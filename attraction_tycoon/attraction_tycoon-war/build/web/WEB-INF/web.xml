@@ -4,6 +4,10 @@
         <servlet-name>AffichageShopServlet</servlet-name>
         <servlet-class>servlets.AffichageShopServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateShopServlet</servlet-name>
+        <servlet-class>servlets.CreateShopServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeconnexionServlet</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
@@ -19,6 +23,10 @@
     <servlet-mapping>
         <servlet-name>AffichageShopServlet</servlet-name>
         <url-pattern>/shops</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateShopServlet</servlet-name>
+        <url-pattern>/createShop</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
