@@ -22,6 +22,7 @@ public class AffichageShopServlet extends HttpServlet {
 
     public static final String VUE = "/affichageShop.jsp";
     public static final String CONF_DAO_FACTORY = "daofactory";
+    public static final String VUE_POST = "/shops";
 
     private ShopDao shopDao;
 
@@ -36,23 +37,42 @@ public class AffichageShopServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         List<Shop> shops = null;
-            try {
-                shops = shopDao.findAll();
-            } catch (DAOException ex) {
-                Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-            System.out.println(shops);
+        try {
+            shops = shopDao.findAll();
+        } catch (DAOException ex) {
+            Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        System.out.println(shops);
 
         session.setAttribute("shops", shops);
-        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-        
-        
+
+        String id = request.getParameter("id");
+        String del = request.getParameter("delete");
+        String upd = request.getParameter("update");
+
+        if (null != id) {
+            if (null != del && del.equals("1")) {
+                //DELETE
+                try {
+                    shopDao.delete(Integer.parseInt(id));
+                } catch (DAOException ex) {
+                    Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String redirect = response.encodeRedirectURL(request.getContextPath() + VUE_POST);
+                response.sendRedirect(redirect);
+            } else if (null != upd && upd.equals("1")) {
+                //  UPDATE
+                this.getServletContext().getRequestDispatcher("/updateshop").forward(request, response);
+            }
+        } else {
+            this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        }
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
     }
 
 }

@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface ShopDao {
     void create( Shop shop ) throws DAOException;
-    Shop findByName( String name ) throws DAOException;
+    Shop findById( int id ) throws DAOException;
     List<Shop> findAll() throws DAOException; 
+    void delete(int id) throws DAOException; 
+    void update(Shop shop) throws DAOException; 
 }

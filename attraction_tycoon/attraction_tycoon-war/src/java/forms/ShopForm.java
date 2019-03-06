@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -79,8 +80,8 @@ public class ShopForm {
             } catch (Exception e) {
                 throw new Exception("Veuillez saisir la zone associée.");
             }
-            
-        }else{
+
+        } else {
             throw new Exception("Veuillez saisir la zone associée.");
         }
     }
@@ -103,5 +104,36 @@ public class ShopForm {
         } else {
             return valeur.trim();
         }
+    }
+
+    public void updateShop(HttpServletRequest request) throws DAOException {
+        HttpSession session = request.getSession();
+        String idshop = (String) session.getAttribute("id");
+        Long id = Long.parseLong(idshop);
+        Shop shop = new Shop();
+        shop.setId(id);
+        String name = getValeurChamp(request, "name");
+        String type = getValeurChamp(request, "type");
+        String zone = getValeurChamp(request, "zone");
+
+        try {
+            check(name);
+            check(type);
+            checkZone(zone);
+        } catch (Exception e) {
+            setErreur("zone", e.getMessage());
+        }
+
+        if (erreurs.isEmpty()) {
+            shop.setName(name);
+            shop.setType(type);
+            shop.setZone(Integer.parseInt(zone));
+            shopDao.update(shop);
+            resultat = "Boutique modifiée avec succès.";
+        } else {
+            resultat = "Échec.";
+        }
+        System.out.println(resultat);
+
     }
 }

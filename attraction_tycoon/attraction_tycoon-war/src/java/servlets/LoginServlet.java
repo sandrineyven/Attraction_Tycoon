@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Affichage de la page de connexion */
-System.out.println("SHOPS : ");
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
 

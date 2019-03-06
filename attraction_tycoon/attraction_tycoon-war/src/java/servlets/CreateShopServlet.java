@@ -5,21 +5,17 @@
  */
 package servlets;
 
-import beans.Shop;
 import dao.DAOException;
 import dao.DAOFactory;
 import dao.ShopDao;
 import forms.ShopForm;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,6 +24,8 @@ import javax.servlet.http.HttpSession;
 public class CreateShopServlet extends HttpServlet {
 
     public static final String VUE = "/createshop.jsp";
+    
+    public static final String VUE_POST = "/shops";
     public static final String CONF_DAO_FACTORY = "daofactory";
 
     private ShopDao shopDao;
@@ -41,14 +39,13 @@ public class CreateShopServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- /* Préparation de l'objet formulaire */
+        /* Préparation de l'objet formulaire */
         ShopForm form = new ShopForm(shopDao);
 
         try {
@@ -59,11 +56,12 @@ public class CreateShopServlet extends HttpServlet {
 
         request.setAttribute("form", form);
 
-//        if (form.getErreurs().isEmpty()) {
-//            response.sendRedirect("affichageShop.jsp");
-//        } else {
+        if (form.getErreurs().isEmpty()) {
+            String redirect = response.encodeRedirectURL(request.getContextPath() + VUE_POST);
+            response.sendRedirect(redirect);
+        } else {
             this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-//        }
+        }
     }
 
 }

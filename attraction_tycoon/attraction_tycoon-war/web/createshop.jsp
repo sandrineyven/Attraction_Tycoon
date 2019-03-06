@@ -32,7 +32,7 @@
            <div class="input-group flex-nowrap">
                 <input type="Zone" id="zone" name="zone" value="<c:out value="${shop.zone}"/>" size="20" maxlength="1"  class="form-control" aria-label="N° zone" aria-describedby="addon-wrapping" placeholder="N° zone"/>
             </div>
-            <span class="erreur">${form.erreurs['motdepasse']}</span>
+            <span class="erreur">${form.erreurs['zone']}</span>
             <br />
 
             <input type="submit" value="Ajouter" class="btn btn-success" />

@@ -21,9 +21,11 @@ import java.util.List;
  */
 public class ShopDaoImpl implements ShopDao{
 
- private static final String SQL_SELECT_WITH_NAME = "SELECT id_shop, email, login, password FROM shop WHERE name = ?";
+ private static final String SQL_SELECT_WITH_ID = "SELECT id_shop, name, type, id_zone FROM shop WHERE id_shop = ?";
     private static final String SQL_INSERT = "INSERT INTO shop (name, type, id_zone) VALUES (?, ?, ?)";
     private static final String SQL_SELECT_ALL = "SELECT * FROM shop";
+    private static final String SQL_DELETE = "DELETE FROM shop WHERE id_shop = ?";
+     private static final String SQL_UPDATE = "UPDATE shop SET name = ?, type = ?, id_zone = ? WHERE id_shop = ?";
     private final DAOFactory daoFactory;
 
     public ShopDaoImpl(DAOFactory daoFactory) {
@@ -68,13 +70,13 @@ public class ShopDaoImpl implements ShopDao{
 
     /**
      *
-     * @param name
+     * @param id
      * @return Shop
      * @throws DAOException Add shop to the current database Search an Shop
      * thanks to his mail adress
      */
     @Override
-    public Shop findByName(String name) throws DAOException {
+    public Shop findById(int id) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -83,7 +85,7 @@ public class ShopDaoImpl implements ShopDao{
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_SELECT_WITH_NAME, false, name);
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_SELECT_WITH_ID, false, id);
             resultSet = preparedStatement.executeQuery();
             /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
             if (resultSet.next()) {
@@ -135,5 +137,53 @@ public class ShopDaoImpl implements ShopDao{
         shop.setType(resultSet.getString("type"));
         shop.setZone(resultSet.getInt("id_zone"));
         return shop;
+    }
+
+    @Override
+    public void delete(int id) throws DAOException{
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet valeursAutoGenerees = null;
+
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_DELETE, true, id);
+            int statut = preparedStatement.executeUpdate();
+            if (statut == 0) {
+                throw new DAOException("Echec to delete shop.");
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(valeursAutoGenerees, preparedStatement, connexion);
+        }
+    
+    }
+
+
+/**
+     *
+     * @param shop
+     * @throws IllegalArgumentException
+     * @throws DAOException Add shop to the current database
+     */
+    @Override
+    public void update(Shop shop) throws IllegalArgumentException, DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet valeursAutoGenerees = null;
+
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_UPDATE, true, shop.getName(), shop.getType(),shop.getZone(),shop.getId());
+            int statut = preparedStatement.executeUpdate();
+            if (statut == 0) {
+                throw new DAOException("Echec to update shop.");
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(valeursAutoGenerees, preparedStatement, connexion);
+        }
     }
 }
