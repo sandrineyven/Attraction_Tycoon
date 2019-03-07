@@ -1,6 +1,8 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +16,11 @@ public class Shop implements Serializable {
     
     private String type;
     
-   private int zone;
+    private int zone;
+    
+    private Zone zoneA;
+    
+    List<Staff> staffs = new ArrayList();
 
     public Shop() {
     }
@@ -43,13 +49,13 @@ public class Shop implements Serializable {
         this.type = type;
     }
 
-//    public Zone getZone() {
-//        return zone;
-//    }
-//
-//    public void setZone(Zone zone) {
-//        this.zone = zone;
-//    }
+    public List<Staff> getStaffs() {
+        return staffs;
+    }
+
+    public void setStaffs(List<Staff> staffs) {
+        this.staffs = staffs;
+    }
 
     public int getZone() {
         return zone;
@@ -57,6 +63,14 @@ public class Shop implements Serializable {
 
     public void setZone(int zone) {
         this.zone = zone;
+    }
+
+    public Zone getZoneA() {
+        return zoneA;
+    }
+
+    public void setZoneA(Zone zoneA) {
+        this.zoneA = zoneA;
     }
 
     

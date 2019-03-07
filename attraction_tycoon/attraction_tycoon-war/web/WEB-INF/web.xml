@@ -45,6 +45,10 @@
         <servlet-name>UpdateEmployeeServlet</servlet-name>
         <servlet-class>servlets.UpdateEmployeeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ZoneServlet</servlet-name>
+        <servlet-class>servlets.ZoneServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeconnexionServlet</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
@@ -88,6 +92,10 @@
     <servlet-mapping>
         <servlet-name>UpdateEmployeeServlet</servlet-name>
         <url-pattern>/updateemployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ZoneServlet</servlet-name>
+        <url-pattern>/zones</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

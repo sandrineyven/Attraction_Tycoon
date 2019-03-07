@@ -52,7 +52,7 @@
                                 <a class="dropdown-item" href="<c:url value="/staff"/>">Staff</a>
                                 <a class="dropdown-item" href="<c:url value="/shops"/>">Shops</a>
                                 <a class="dropdown-item" href="#">Maneges</a>
-                                <a class="dropdown-item" href="#">Zone</a>
+                                <a class="dropdown-item" href="<c:url value="/zones"/>">Zones</a>
                             </div>
                         </li>
                         <%--                </c:if>  --%>

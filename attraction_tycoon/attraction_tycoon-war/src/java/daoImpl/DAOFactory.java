@@ -4,6 +4,7 @@ import dao.DAOConfigurationException;
 import dao.ShopDao;
 import dao.StaffDao;
 import dao.UserDao;
+import dao.ZoneDao;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,5 +87,9 @@ public class DAOFactory {
 
     public StaffDao getStaffDao() {
         return new StaffDaoImpl(this);
+    }
+    
+        public ZoneDao getZoneDao() {
+        return new ZoneDaoImpl(this);
     }
 }

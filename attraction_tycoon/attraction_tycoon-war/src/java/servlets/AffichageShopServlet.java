@@ -5,6 +5,7 @@ import dao.DAOException;
 import daoImpl.DAOFactory;
 import dao.ShopDao;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,22 +37,32 @@ public class AffichageShopServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        List<Shop> shops = null;
-        try {
-            shops = shopDao.findAll();
-        } catch (DAOException ex) {
-            Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        System.out.println(shops);
-
-        session.setAttribute("shops", shops);
+        List<Shop> shops = new ArrayList<>();
+        Shop shopUnique = new Shop();
 
         String id = request.getParameter("id");
         String del = request.getParameter("delete");
         String upd = request.getParameter("update");
 
-        if (null != id) {
+        if (null != id && null == del && null == upd) {
+            try {
+                shopUnique = shopDao.findById(Integer.parseInt(id));
+            } catch (DAOException ex) {
+                Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            shops.add(shopUnique);
+        } else {
+
+            try {
+                shops = shopDao.findAll();
+            } catch (DAOException ex) {
+                Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        session.setAttribute("shops", shops);
+
+        if (null != id && (null != del || null != upd)) {
             if (null != del && del.equals("1")) {
                 //DELETE
                 try {
