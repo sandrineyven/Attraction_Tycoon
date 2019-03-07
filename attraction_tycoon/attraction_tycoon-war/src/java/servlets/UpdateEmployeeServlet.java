@@ -71,7 +71,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
         }
 
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-        request.setAttribute("staff", null);
+
     }
 
     @Override
