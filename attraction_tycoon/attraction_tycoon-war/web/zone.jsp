@@ -8,7 +8,7 @@
 
 
 <div class="container">
-<h1>Zones</h1>
+    <h1>Zones</h1>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -25,13 +25,15 @@
                         <td><c:out value="${zone.id}" /></td>
                         <td><c:out value="${zone.name}" /></td>
                         <td>
-                            <c:forEach var="shop" items="${zone.shopList}">
-                            <form class="form-inline my-2 my-lg-0" >
-                                <a href="<c:url value="/shops?id=${shop.id}"/>">
-                                   <c:out value="${shop.name}" />
-                                </a>
-                            </form>
+                            <ul>
+                                <c:forEach var="shop" items="${zone.shopList}">
+                                    <form class="form-inline my-2 my-lg-0" >
+                                        <li><a href="<c:url value="/shops?id=${shop.id}"/>">
+                                                <c:out value="${shop.name}" />
+                                            </a></li>
+                                    </form>
                                 </c:forEach>
+                            </ul>
                         </td>
                     </tr>
                 </c:forEach>
@@ -39,6 +41,14 @@
             </tbody>
         </form>
     </table>
+
+    <center> 
+        <figure class="figure">
+            <div class="w3-content" style="max-width:800px">
+                <img src="ressource/map.jpg" class="img-fluid img-thumbnail" alt="Responsive image" >
+                <figcaption class="figure-caption">Carte du parc</figcaption>
+        </figure>
+    </center>
 
 </div>
 

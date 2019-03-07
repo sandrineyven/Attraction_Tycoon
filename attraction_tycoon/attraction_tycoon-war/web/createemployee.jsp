@@ -22,7 +22,7 @@
             <br />
 
             <div class="input-group flex-nowrap">
-                <input type="email" id="login" name="email" value="<c:out value="${user.email}"/>" size="20" maxlength="60"  class="form-control" aria-label="Email" aria-describedby="addon-wrapping" placeholder="Email"/>
+                <input type="email" id="login" name="email" value="<c:out value="${newuser.email}"/>" size="20" maxlength="60"  class="form-control" aria-label="Email" aria-describedby="addon-wrapping" placeholder="Email"/>
             </div>
             <span class="erreur">${form.erreurs['email']}</span>
             <br />

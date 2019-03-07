@@ -51,7 +51,7 @@ public class ShopForm {
             check(type);
             checkZone(zone);
         } catch (Exception e) {
-            setErreur("name", e.getMessage());
+            setErreur("zone", e.getMessage());
         }
 
         if (erreurs.isEmpty()) {
@@ -76,10 +76,14 @@ public class ShopForm {
     private void checkZone(String zone) throws Exception {
         if (zone != null) {
             try {
-                Integer.parseInt(zone);
+               Integer.parseInt(zone);
             } catch (Exception e) {
                 throw new Exception("Veuillez saisir la zone associée.");
             }
+            int z = Integer.parseInt(zone);
+            if (z < 1 || z > 5) {
+                    throw new Exception("Veuillez saisir une zone entre 1 et 5.");
+                }
 
         } else {
             throw new Exception("Veuillez saisir la zone associée.");

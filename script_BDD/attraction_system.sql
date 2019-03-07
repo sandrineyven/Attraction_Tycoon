@@ -138,3 +138,14 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Insertion de donnees dans la table `zone`
+--
+INSERT INTO zone VALUES (1,"Entree");
+INSERT INTO zone VALUES (2,"Ouest");
+INSERT INTO zone VALUES (3,"Centre");
+INSERT INTO zone VALUES (4,"Est");
+INSERT INTO zone VALUES (5,"Nord");

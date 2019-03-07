@@ -43,19 +43,19 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="<c:url value="/deconnexion"/>">Deconnexion</a>
                             </li>
-                        </c:if>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                Menu
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="<c:url value="/staff"/>">Staff</a>
-                                <a class="dropdown-item" href="<c:url value="/shops"/>">Shops</a>
-                                <a class="dropdown-item" href="#">Maneges</a>
-                                <a class="dropdown-item" href="<c:url value="/zones"/>">Zones</a>
-                            </div>
-                        </li>
-                        <%--                </c:if>  --%>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Menu
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<c:url value="/staff"/>">Staff</a>
+                                    <a class="dropdown-item" href="<c:url value="/shops"/>">Shops</a>
+                                    <a class="dropdown-item" href="#">Maneges</a>
+                                    <a class="dropdown-item" href="<c:url value="/zones"/>">Zones</a>
+                                </div>
+                            </li>
+                        </c:if>  
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -65,4 +65,4 @@
             </nav>
         </div>
     </div>
-<body>
+    <body>

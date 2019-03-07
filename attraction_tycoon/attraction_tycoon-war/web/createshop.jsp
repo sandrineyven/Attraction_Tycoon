@@ -21,17 +21,18 @@
             <span class="erreur">${form.erreurs['name']}</span>
             <br />
 
-            
+
             <div class="input-group flex-nowrap">
-                
+
                 <input type="type" id="type" name="type" value="<c:out value="${shop.type}"/>" size="20" maxlength="60" class="form-control" aria-label="Type" aria-describedby="addon-wrapping" placeholder="Type"/>
             </div>
             <span class="erreur">${form.erreurs['type']}</span>
             <br />
 
-           <div class="input-group flex-nowrap">
-                <input type="Zone" id="zone" name="zone" value="<c:out value="${shop.zone}"/>" size="20" maxlength="1"  class="form-control" aria-label="N° zone" aria-describedby="addon-wrapping" placeholder="N° zone"/>
+            <div class="input-group flex-nowrap">
+                <input type="select" id="zone" name="zone" value="<c:out value="${shop.zone}"/>" class="form-control" aria-label="N° zone" aria-describedby="addon-wrapping" placeholder="N° zone"/>
             </div>
+
             <span class="erreur">${form.erreurs['zone']}</span>
             <br />
 
