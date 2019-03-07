@@ -30,7 +30,15 @@
             <br />
 
             <div class="input-group flex-nowrap">
-                <input type="select" id="zone" name="zone" value="<c:out value="${shop.zone}"/>" class="form-control" aria-label="N° zone" aria-describedby="addon-wrapping" placeholder="N° zone"/>
+                
+                <select id="select" name="zone" value="<c:out value="${shop.zone}"/>" class="form-control" aria-label="N° zone" aria-describedby="addon-wrapping" placeholder="N° zone">
+                    <option value="">N° zone</option>
+                    <option value="1">Zone N°1</option>
+                    <option value="2">Zone N°2</option>
+                    <option value="3">Zone N°3</option>
+                    <option value="4">Zone N°4</option>
+                    <option value="5">Zone N°5</option>
+                </select>
             </div>
 
             <span class="erreur">${form.erreurs['zone']}</span>
