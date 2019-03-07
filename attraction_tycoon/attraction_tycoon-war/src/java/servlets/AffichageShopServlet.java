@@ -2,7 +2,7 @@ package servlets;
 
 import beans.Shop;
 import dao.DAOException;
-import dao.DAOFactory;
+import daoImpl.DAOFactory;
 import dao.ShopDao;
 import java.io.IOException;
 import java.util.List;

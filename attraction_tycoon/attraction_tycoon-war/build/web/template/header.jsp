@@ -45,11 +45,11 @@
                             </li>
                         </c:if>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Menu
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Staff</a>
+                                <a class="dropdown-item" href="<c:url value="/staff"/>">Staff</a>
                                 <a class="dropdown-item" href="<c:url value="/shops"/>">Shops</a>
                                 <a class="dropdown-item" href="#">Maneges</a>
                                 <a class="dropdown-item" href="#">Zone</a>

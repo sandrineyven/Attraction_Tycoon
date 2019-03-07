@@ -6,7 +6,7 @@
 package servlets;
 
 import dao.DAOException;
-import dao.DAOFactory;
+import daoImpl.DAOFactory;
 import dao.ShopDao;
 import forms.ShopForm;
 import java.io.IOException;

@@ -29,6 +29,22 @@
         <servlet-name>UpdateShopServlet</servlet-name>
         <servlet-class>servlets.UpdateShopServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ShowStaffServlet</servlet-name>
+        <servlet-class>servlets.ShowStaffServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowEmployeeServlet</servlet-name>
+        <servlet-class>servlets.ShowEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateEmployeeServlet</servlet-name>
+        <servlet-class>servlets.CreateEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateEmployeeServlet</servlet-name>
+        <servlet-class>servlets.UpdateEmployeeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeconnexionServlet</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
@@ -56,6 +72,22 @@
     <servlet-mapping>
         <servlet-name>UpdateShopServlet</servlet-name>
         <url-pattern>/updateshop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowStaffServlet</servlet-name>
+        <url-pattern>/staff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowEmployeeServlet</servlet-name>
+        <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateEmployeeServlet</servlet-name>
+        <url-pattern>/createemployee</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateEmployeeServlet</servlet-name>
+        <url-pattern>/updateemployee</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

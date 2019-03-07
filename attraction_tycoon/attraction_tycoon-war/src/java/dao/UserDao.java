@@ -11,5 +11,6 @@ public interface UserDao {
     void create( User utilisateur ) throws DAOException;
     User findByEmail( String email ) throws DAOException;
     List<User> findAll() throws DAOException;
+    User findById(long id)throws DAOException;
     
 }

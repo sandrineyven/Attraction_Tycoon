@@ -7,7 +7,7 @@ package servlets;
 
 import beans.Shop;
 import dao.DAOException;
-import dao.DAOFactory;
+import daoImpl.DAOFactory;
 import dao.ShopDao;
 import forms.ShopForm;
 import java.io.IOException;
@@ -48,7 +48,6 @@ public class UpdateShopServlet extends HttpServlet {
             int idshop = Integer.parseInt(id);
             try {
                 shop = shopDao.findById(idshop);
-
             } catch (DAOException ex) {
                 Logger.getLogger(UpdateShopServlet.class.getName()).log(Level.SEVERE, null, ex);
             }

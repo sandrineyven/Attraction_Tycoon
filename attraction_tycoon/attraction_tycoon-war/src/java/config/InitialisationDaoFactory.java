@@ -5,7 +5,7 @@
  */
 package config;
 
-import dao.DAOFactory;
+import daoImpl.DAOFactory;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

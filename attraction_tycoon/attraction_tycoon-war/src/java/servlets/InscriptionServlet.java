@@ -1,7 +1,7 @@
 package servlets;
 
 import beans.User;
-import dao.DAOFactory;
+import daoImpl.DAOFactory;
 import dao.UserDao;
 import forms.InscriptionForm;
 import java.io.IOException;
@@ -47,6 +47,11 @@ public class InscriptionServlet extends HttpServlet {
         request.setAttribute(ATT_FORM, form);
         request.setAttribute(ATT_USER, utilisateur);
 
-        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        if (form.getErreurs().isEmpty()) {
+            String redirect = response.encodeRedirectURL(request.getContextPath());
+            response.sendRedirect(redirect);
+        } else {
+            this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+        }
     }
 }
