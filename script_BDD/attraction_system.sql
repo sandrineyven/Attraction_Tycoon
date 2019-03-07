@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `shop` (
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
   `id_staff` int(10) NOT NULL AUTO_INCREMENT,
+  `id_user` int(10) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `salary` double DEFAULT NULL,
   `labor_hours` int(11) DEFAULT NULL,
