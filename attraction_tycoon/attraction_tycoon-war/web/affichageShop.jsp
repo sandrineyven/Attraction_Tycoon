@@ -11,7 +11,17 @@
 <div class="container">
 
 
-    <a href="<c:url value="/createShop"/>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">+</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a href="<c:url value="/createShop"/>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">+ Ajouter</a>
+        <a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form method="post" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" id="search" name="search" value="<c:out value="${search}"/>" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+    </nav>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -25,7 +35,6 @@
         </thead>
         <form method="get" action="shops">
             <tbody>
-
                 <c:forEach var="shop" items="${shops}">
                     <tr>
                         <td><c:out value="${shop.id}" /></td>

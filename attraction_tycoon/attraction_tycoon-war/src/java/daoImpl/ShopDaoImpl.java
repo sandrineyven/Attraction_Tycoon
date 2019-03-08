@@ -26,6 +26,7 @@ public class ShopDaoImpl implements ShopDao {
     private static final String SQL_SELECT_WITH_ID = "SELECT id_shop, name, type, id_zone FROM shop WHERE id_shop = ?";
     private static final String SQL_INSERT = "INSERT INTO shop (name, type, id_zone) VALUES (?, ?, ?)";
     private static final String SQL_SELECT_ALL = "SELECT * FROM shop";
+    private static final String SQL_SELECT_WITH_SEARCH = "SELECT id_shop, name, type, id_zone FROM shop WHERE name LIKE ";
     private static final String SQL_DELETE = "DELETE FROM shop WHERE id_shop = ?";
     private static final String SQL_UPDATE = "UPDATE shop SET name = ?, type = ?, id_zone = ? WHERE id_shop = ?";
      private static final String SQL_SELECT_WITH_ZONE = "SELECT id_shop, name, type, id_zone FROM shop WHERE id_zone = ?";
@@ -205,6 +206,35 @@ public class ShopDaoImpl implements ShopDao {
             while (resultSet.next()) {
                 Shop shop = map(resultSet);
                 
+                if (shop != null) {
+                    shops.add(shop);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(resultSet, preparedStatement, connexion);
+        }
+
+        return shops;
+    }
+
+    @Override
+    public List<Shop> findBySearch(String search) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Shop> shops = new ArrayList<>();
+        
+        String query = SQL_SELECT_WITH_SEARCH + "'" + search + "%' OR type LIKE " + "'" + search + "%'";
+        System.out.println(query);
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee(connexion, query, false);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Shop shop = map(resultSet);
                 if (shop != null) {
                     shops.add(shop);
                 }

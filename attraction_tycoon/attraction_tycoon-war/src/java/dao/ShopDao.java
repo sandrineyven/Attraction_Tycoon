@@ -19,4 +19,5 @@ public interface ShopDao {
     void delete(int id) throws DAOException; 
     void update(Shop shop) throws DAOException; 
     List<Shop> findByZone(long zone) throws DAOException;
+    List<Shop> findBySearch(String search) throws DAOException;
 }

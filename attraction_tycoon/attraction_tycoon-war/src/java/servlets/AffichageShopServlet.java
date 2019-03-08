@@ -83,7 +83,24 @@ public class AffichageShopServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        String search = request.getParameter("search");
+        
+        List<Shop> shops = new ArrayList<>();
+        
+        if(search.trim() != null){
+            try {
+               shops = shopDao.findBySearch(search);
+            } catch (DAOException ex) {
+                Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(null != shops){
+                   session.setAttribute("shops", shops);
+            }
+        }
+        
+        
+        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
 
 }
