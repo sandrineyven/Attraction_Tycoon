@@ -29,7 +29,7 @@ public class ShopDaoImpl implements ShopDao {
     private static final String SQL_SELECT_WITH_SEARCH = "SELECT id_shop, name, type, id_zone FROM shop WHERE name LIKE ";
     private static final String SQL_DELETE = "DELETE FROM shop WHERE id_shop = ?";
     private static final String SQL_UPDATE = "UPDATE shop SET name = ?, type = ?, id_zone = ? WHERE id_shop = ?";
-     private static final String SQL_SELECT_WITH_ZONE = "SELECT id_shop, name, type, id_zone FROM shop WHERE id_zone = ?";
+    private static final String SQL_SELECT_WITH_ZONE = "SELECT id_shop, name, type, id_zone FROM shop WHERE id_zone = ?";
     private final DAOFactory daoFactory;
 
     public ShopDaoImpl(DAOFactory daoFactory) {
@@ -189,7 +189,6 @@ public class ShopDaoImpl implements ShopDao {
         }
     }
 
- 
     @Override
     public List<Shop> findByZone(long zone) throws DAOException {
         Connection connexion = null;
@@ -205,7 +204,7 @@ public class ShopDaoImpl implements ShopDao {
             /* Parcours de la ligne de données de l'éventuel ResulSet retourné */
             while (resultSet.next()) {
                 Shop shop = map(resultSet);
-                
+
                 if (shop != null) {
                     shops.add(shop);
                 }
@@ -225,8 +224,51 @@ public class ShopDaoImpl implements ShopDao {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         List<Shop> shops = new ArrayList<>();
-        
+
         String query = SQL_SELECT_WITH_SEARCH + "'" + search + "%' OR type LIKE " + "'" + search + "%'";
+        System.out.println(query);
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee(connexion, query, false);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Shop shop = map(resultSet);
+                if (shop != null) {
+                    shops.add(shop);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(resultSet, preparedStatement, connexion);
+        }
+
+        return shops;
+    }
+
+    @Override
+    public List<Shop> findBySearchAdvanced(String search, List<Integer> zones) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Shop> shops = new ArrayList<>();
+
+        String query = SQL_SELECT_ALL + " WHERE ";
+        if (!search.trim().isEmpty()) {
+            query += "(name LIKE " + "'" + search + "%' OR type LIKE " + "'" + search + "%')";
+            if (!zones.isEmpty()) {
+                query += " AND ";
+            }
+        }
+        if (!zones.isEmpty()) {
+            query += "id_zone = " + zones.get(0);
+            if (zones.size() > 1) {
+                for (int i = 1; i < zones.size(); i++) {
+                    query += " OR id_zone = " + zones.get(i);
+                }
+            }
+        }
         System.out.println(query);
         try {
             connexion = daoFactory.getConnection();

@@ -44,6 +44,10 @@
                                 <a class="nav-link" href="<c:url value="/deconnexion"/>">Deconnexion</a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" href="<c:url value="search.jsp"/>">Recherche avancée</a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     Menu

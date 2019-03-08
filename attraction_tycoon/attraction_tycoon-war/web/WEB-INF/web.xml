@@ -49,6 +49,10 @@
         <servlet-name>ZoneServlet</servlet-name>
         <servlet-class>servlets.ZoneServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>servlets.SearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DeconnexionServlet</servlet-name>
         <url-pattern>/deconnexion</url-pattern>
@@ -96,6 +100,10 @@
     <servlet-mapping>
         <servlet-name>ZoneServlet</servlet-name>
         <url-pattern>/zones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

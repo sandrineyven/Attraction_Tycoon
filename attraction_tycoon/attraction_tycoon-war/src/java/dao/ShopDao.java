@@ -20,4 +20,5 @@ public interface ShopDao {
     void update(Shop shop) throws DAOException; 
     List<Shop> findByZone(long zone) throws DAOException;
     List<Shop> findBySearch(String search) throws DAOException;
+    List<Shop> findBySearchAdvanced(String search, List<Integer> zones) throws DAOException;
 }

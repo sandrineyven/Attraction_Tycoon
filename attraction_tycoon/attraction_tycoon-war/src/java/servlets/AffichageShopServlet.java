@@ -99,7 +99,6 @@ public class AffichageShopServlet extends HttpServlet {
             }
         }
         
-        
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
 
