@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package config;
 
 import daoImpl.DAOFactory;
@@ -10,10 +5,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-/**
- *
- * @author gigabyte
- */
 public class InitialisationDaoFactory implements ServletContextListener{
     private static final String ATT_DAO_FACTORY = "daofactory";
     private DAOFactory daoFactory;

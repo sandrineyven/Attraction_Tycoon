@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import beans.Staff;
@@ -20,10 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Sandrine
- */
 public class ShowEmployeeServlet extends HttpServlet {
 
     public static final String VUE = "/showemployee.jsp";
@@ -51,15 +42,15 @@ public class ShowEmployeeServlet extends HttpServlet {
         } catch (DAOException ex) {
             Logger.getLogger(ShowEmployeeServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-          if (staff != null) {
-                try {
-                    user = userDao.findById(staff.getId_user());
-                } catch (DAOException ex) {
-                    Logger.getLogger(UpdateEmployeeServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
+        if (staff != null) {
+            try {
+                user = userDao.findById(staff.getId_user());
+            } catch (DAOException ex) {
+                Logger.getLogger(UpdateEmployeeServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
+        }
+
         session.setAttribute("staff", staff);
         session.setAttribute("user", user);
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);

@@ -10,27 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sandrine
- */
 public class InscriptionServlet extends HttpServlet {
 
     public static final String CONF_DAO_FACTORY = "daofactory";
     public static final String ATT_USER = "utilisateur";
     public static final String ATT_FORM = "form";
     public static final String VUE = "/inscription.jsp";
+    
     private UserDao userDao;
 
     @Override
     public void init() throws ServletException {
-        /* Récupération d'une instance de notre DAO Utilisateur */
+        /* Récupération d'une instance de notre DAO User */
         this.userDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getUserDao();
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         /* Affichage de la page d'inscription */
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }

@@ -1,10 +1,3 @@
-<%-- 
-    Document   : inscription
-    Created on : 27 févr. 2019, 11:39:05
-    Author     : Sandrine
---%>
-
-
 <%@ include file = "template/header.jsp" %>
 <%@ include file = "template/global.jsp" %>
 
@@ -48,7 +41,7 @@
 
             <span class="erreur">${form.erreurs['motdepasse']}</span>
             <br />
-            
+
             <div class="input-group flex-nowrap">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="addon-wrapping">!</span>
@@ -64,6 +57,6 @@
             <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
         </fieldset>
     </form>
-
 </div>
+
 <%@ include file = "template/footer.jsp" %>

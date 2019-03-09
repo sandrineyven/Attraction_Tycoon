@@ -1,9 +1,3 @@
-<%-- 
-    Document   : affichageShop
-    Created on : 27 févr. 2019, 16:22:54
-    Author     : Sandrine
---%>
-
 
 <%@ include file = "template/header.jsp" %>
 
@@ -53,11 +47,9 @@
                         </td>
                     </tr>
                 </c:forEach>
-
             </tbody>
         </form>
     </table>
-
 </div>
 
 <%@ include file = "template/footer.jsp" %>

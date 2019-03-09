@@ -2,10 +2,7 @@ package beans;
 
 import java.io.Serializable;
 
-/**
- *
- * @author Sandrine
- */
+
 public class User implements Serializable{
   
     private String password;

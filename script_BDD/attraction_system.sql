@@ -156,10 +156,10 @@ INSERT INTO user (email, password, login) VALUES ("test@test.ca", "test", "Test"
 INSERT INTO user (email, password, login) VALUES ("e.sanchez@test.ca", "test", "Emma C. Sanchez");
 INSERT INTO user (email, password, login) VALUES ("l.snow@test.ca", "test", "Leonardo D. Snow");
 
-INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (0,"Sandrine Yven", 210,35,"Administrateur","A");
-INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (1,"Alexandre Lebegue", 210,35,"Administrateur","A");
-INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (3,"Emma C. Sanchez", 30,32,"Seller","A");
-INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (4,"Leonardo D. Snow", 25,20,"Cleaner","A");
+INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (1,"Sandrine Yven", 210,35,"Administrateur","A");
+INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (2,"Alexandre Lebegue", 210,35,"Administrateur","A");
+INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (4,"Emma C. Sanchez", 30,32,"Seller","A");
+INSERT INTO staff (id_user,name,salary,labor_hours,type,status) VALUES (5,"Leonardo D. Snow", 25,20,"Cleaner","A");
 
 INSERT INTO shop (name,type,id_zone) VALUES ("Hotdog", "Stand",1);
 INSERT INTO shop (name,type,id_zone) VALUES ("Le Grill", "Restauration",2);

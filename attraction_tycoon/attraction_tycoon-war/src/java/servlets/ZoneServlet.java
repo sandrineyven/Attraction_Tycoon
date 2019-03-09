@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import beans.Shop;
@@ -12,7 +7,6 @@ import dao.ShopDao;
 import dao.ZoneDao;
 import daoImpl.DAOFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,10 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sandrine
- */
 public class ZoneServlet extends HttpServlet {
 
     public static final String VUE = "/zone.jsp";
@@ -63,9 +53,7 @@ public class ZoneServlet extends HttpServlet {
         }
 
         request.setAttribute("zones", zones);
-
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-
     }
 
     @Override

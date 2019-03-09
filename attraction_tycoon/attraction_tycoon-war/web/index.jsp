@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 18 févr. 2019, 18:16:44
-    Author     : Sandrine
---%>
 
 <%@ include file = "template/header.jsp" %>
 <%@ include file = "template/global.jsp" %>
@@ -12,17 +7,6 @@
         height:100vh;
     }
 </style>
-
-<%--
-        <div align="left">
-            <c:if test="${empty sessionScope.sessionUser}">
-                <p><a href="<c:url value="/log"/>">Connexion</a>
-                    <a href="<c:url value="/inscription"/>">Inscription</a></p>
-                </c:if>
-        </div>
-
---%>
-
 
 <div class="col-100vh">
     <div class="text-center">
@@ -71,8 +55,5 @@
         </footer>
     </center>   
 </div>
-
-
-
 
 <%@ include file = "template/footer.jsp" %>

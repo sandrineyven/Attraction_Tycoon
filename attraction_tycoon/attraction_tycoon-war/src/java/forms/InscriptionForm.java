@@ -1,9 +1,5 @@
 package forms;
 
-/**
- *
- * @author Sandrine
- */
 import beans.User;
 import dao.DAOException;
 import dao.UserDao;

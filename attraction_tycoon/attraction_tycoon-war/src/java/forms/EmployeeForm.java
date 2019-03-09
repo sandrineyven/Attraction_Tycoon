@@ -41,6 +41,7 @@ public class EmployeeForm {
         String salary = getValeurChamp(request, "salary");
         String email = getValeurChamp(request, "email");
         String hours = getValeurChamp(request, "hours");
+        //Pour l'instant mis à "A"
         String status = "A";
 
         Staff staff = new Staff();
@@ -56,9 +57,7 @@ public class EmployeeForm {
         }
 
         if (erreurs.isEmpty()) {
-
             User user = userDao.findByEmail(email);
-
             staff.setName(name);
             staff.setType(type);
             staff.setHours(Integer.parseInt(hours));
@@ -70,7 +69,6 @@ public class EmployeeForm {
         } else {
             resultat = "Échec.";
         }
-        System.out.println(resultat);
     }
 
     private void check(String nom) throws Exception {

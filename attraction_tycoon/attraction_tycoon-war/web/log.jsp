@@ -1,9 +1,3 @@
-<%-- 
-    Document   : log
-    Created on : 22 févr. 2019, 15:13:28
-    Author     : Sandrine
---%>
-
 
 <%@ include file = "template/header.jsp" %>
 <%@ include file = "template/global.jsp" %>
@@ -43,7 +37,7 @@
             </form>
         </div>
     </div>
-
 </div>
+
 <%@ include file = "template/footer.jsp" %>
 

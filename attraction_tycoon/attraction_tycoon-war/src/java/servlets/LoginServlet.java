@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        /* Récupération d'une instance de notre DAO Utilisateur */
+        /* Récupération d'une instance de notre DAO User */
         this.userDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getUserDao();
     }
 

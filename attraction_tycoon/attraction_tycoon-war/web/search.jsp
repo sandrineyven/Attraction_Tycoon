@@ -1,20 +1,12 @@
-<%-- 
-    Document   : search
-    Created on : 7 mars 2019, 21:14:59
-    Author     : Sandrine
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@ include file = "template/header.jsp" %>
 
 <div class="container">
 
     <form method="post" action="search">
         <fieldset>
-            <legend><h2>Recherche avancÃ©e</h2></legend>
+            <legend><h2>Recherche avancée</h2></legend>
 
-            <h6>NÂ° Zone : </h6>
+            <h6>N° Zone : </h6>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="zone1" name="zone1" value="1">
                 <label class="form-check-label" for="inlineCheckbox1">1</label>
@@ -36,7 +28,7 @@
                 <label class="form-check-label" for="inlineCheckbox2">5</label>
             </div>
 
-            <h6>CatÃ©gorie : </h6>
+            <h6>Catégorie : </h6>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="boxStaff" name="boxStaff" value="true">
                 <label class="form-check-label" for="inlineCheckbox1">Staff</label>
@@ -47,7 +39,7 @@
             </div>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="boxCarousel" name="boxCarousel" value="true">
-                <label class="form-check-label" for="inlineCheckbox2">ManÃ¨ges</label>
+                <label class="form-check-label" for="inlineCheckbox2">Manèges</label>
             </div>
 
             <div class="input-group flex-nowrap">
@@ -61,7 +53,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">CatÃ©gorie</th>
+                    <th scope="col">Catégorie</th>
                     <th scope="col">#ID</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Zone</th>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daoImpl;
 
 import beans.Staff;
@@ -17,10 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Sandrine
- */
 public class StaffDaoImpl implements StaffDao {
 
     private static final String SQL_SELECT_ALL = "SELECT * FROM staff";
@@ -123,11 +114,10 @@ public class StaffDaoImpl implements StaffDao {
     public void delete(int id) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
-        ResultSet valeursAutoGenerees = null;
 
         try {
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_DELETE, true, id);
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_DELETE, false, id);
             int statut = preparedStatement.executeUpdate();
             if (statut == 0) {
                 throw new DAOException("Echec to delete staff.");
@@ -135,7 +125,7 @@ public class StaffDaoImpl implements StaffDao {
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
-            fermeturesSilencieuses(valeursAutoGenerees, preparedStatement, connexion);
+            fermeturesSilencieuses(preparedStatement, connexion);
         }
     }
 
@@ -143,11 +133,10 @@ public class StaffDaoImpl implements StaffDao {
     public void update(Staff staff) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
-        ResultSet valeursAutoGenerees = null;
 
         try {
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_UPDATE, true, staff.getName(), staff.getType(), staff.getSalary(), staff.getHours(), staff.getId());
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_UPDATE, false, staff.getName(), staff.getType(), staff.getSalary(), staff.getHours(), staff.getId());
             int statut = preparedStatement.executeUpdate();
             if (statut == 0) {
                 throw new DAOException("Echec to update staff.");
@@ -155,10 +144,11 @@ public class StaffDaoImpl implements StaffDao {
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
-            fermeturesSilencieuses(valeursAutoGenerees, preparedStatement, connexion);
+            fermeturesSilencieuses(preparedStatement, connexion);
         }
     }
 
+    //MAP resultats BDD - Bean
     private static Staff map(ResultSet resultSet) throws SQLException {
         Staff staff = new Staff();
         staff.setId(resultSet.getLong("id_staff"));

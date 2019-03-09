@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daoImpl;
 
 import beans.User;
@@ -13,12 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author gigabyte
- */
+
 public class UserDaoImpl implements UserDao {
 
     private static final String SQL_SELECT_WITH_EMAIL = "SELECT id_user, email, login, password FROM user WHERE email = ?";
@@ -105,7 +98,7 @@ public class UserDaoImpl implements UserDao {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<User> users = null;
+        List<User> users = new ArrayList<>();
 
         try {
             /* Récupération d'une connexion depuis la Factory */

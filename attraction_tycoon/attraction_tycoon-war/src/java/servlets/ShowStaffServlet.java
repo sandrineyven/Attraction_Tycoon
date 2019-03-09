@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import beans.Staff;
@@ -19,15 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sandrine
- */
 public class ShowStaffServlet extends HttpServlet {
 
     public static final String VUE = "/showstaff.jsp";
-    public static final String CONF_DAO_FACTORY = "daofactory";
     public static final String VUE_POST = "/staff";
+    public static final String CONF_DAO_FACTORY = "daofactory";
 
     private StaffDao staffDao;
 
@@ -72,21 +63,21 @@ public class ShowStaffServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String search = request.getParameter("search");
-        
+
         List<Staff> staffs = new ArrayList<>();
-        
-        if(search.trim() != null){
+
+        if (search.trim() != null) {
             try {
-               staffs = staffDao.findBySearch(search);
+                staffs = staffDao.findBySearch(search);
             } catch (DAOException ex) {
                 Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(null != staffs){
-                   request.setAttribute("staffs", staffs);
+            if (null != staffs) {
+                request.setAttribute("staffs", staffs);
             }
         }
-        
+
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
-    
+
 }

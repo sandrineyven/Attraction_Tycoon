@@ -1,9 +1,3 @@
-<%-- 
-    Document   : zone
-    Created on : 7 mars 2019, 14:41:34
-    Author     : Sandrine
---%>
-
 <%@ include file = "template/header.jsp" %>
 
 

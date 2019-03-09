@@ -1,11 +1,3 @@
-<%-- 
-    Document   : createshop
-    Created on : 4 mars 2019, 17:53:30
-    Author     : Sandrine
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@ include file = "template/header.jsp" %>
 
 <div class="container">
@@ -30,14 +22,14 @@
             <br />
 
             <div class="input-group flex-nowrap">
-                
-                <select id="select" name="zone" value="<c:out value="${shop.zone}"/>" class="form-control" aria-label="NÂ° zone" aria-describedby="addon-wrapping" placeholder="NÂ° zone">
-                    <option value="">NÂ° zone</option>
-                    <option value="1">Zone NÂ°1</option>
-                    <option value="2">Zone NÂ°2</option>
-                    <option value="3">Zone NÂ°3</option>
-                    <option value="4">Zone NÂ°4</option>
-                    <option value="5">Zone NÂ°5</option>
+
+                <select id="select" name="zone" value="<c:out value="${shop.zone}"/>" class="form-control" aria-label="N° zone" aria-describedby="addon-wrapping" placeholder="N° zone">
+                    <option value="">N° zone</option>
+                    <option value="1">Zone N°1</option>
+                    <option value="2">Zone N°2</option>
+                    <option value="3">Zone N°3</option>
+                    <option value="4">Zone N°4</option>
+                    <option value="5">Zone N°5</option>
                 </select>
             </div>
 
@@ -50,7 +42,6 @@
             <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
         </fieldset>
     </form>
-
 </div>
 
 <%@ include file = "template/footer.jsp" %>

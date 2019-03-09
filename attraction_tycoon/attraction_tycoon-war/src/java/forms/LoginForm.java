@@ -1,9 +1,6 @@
 package forms;
 
-/**
- *
- * @author Sandrine
- */
+
 import java.util.HashMap;
 import java.util.Map;
 

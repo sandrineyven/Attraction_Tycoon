@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlets;
 
 import dao.DAOException;
@@ -17,14 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sandrine
- */
 public class CreateShopServlet extends HttpServlet {
 
     public static final String VUE = "/createshop.jsp";
-    
     public static final String VUE_POST = "/shops";
     public static final String CONF_DAO_FACTORY = "daofactory";
 
@@ -38,14 +28,11 @@ public class CreateShopServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /* Préparation de l'objet formulaire */
         ShopForm form = new ShopForm(shopDao);
 
         try {

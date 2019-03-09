@@ -1,9 +1,3 @@
-<%-- 
-    Document   : global
-    Created on : 28 févr. 2019, 10:49:25
-    Author     : gigabyte
---%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 

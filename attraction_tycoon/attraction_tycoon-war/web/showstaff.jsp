@@ -1,18 +1,8 @@
-<%-- 
-    Document   : showstaff
-    Created on : 6 mars 2019, 17:07:10
-    Author     : Sandrine
---%>
-
-
-
 <%@ include file = "template/header.jsp" %>
-
 
 <div class="container">
 
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="<c:url value="/createemployee"/>" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">+ Ajouter</a>
         <a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,8 +12,8 @@
                 </form>
             </div>
     </nav>
-    
-    
+
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -57,7 +47,6 @@
             </tbody>
         </form>
     </table>
-
 </div>
 
 <%@ include file = "template/footer.jsp" %>

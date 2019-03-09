@@ -1,18 +1,10 @@
-<%-- 
-    Document   : updateemployee
-    Created on : 6 mars 2019, 20:36:47
-    Author     : Sandrine
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@ include file = "template/header.jsp" %>
 
 <div class="container">
 
     <form method="post" action="updateemployee">
         <fieldset>
-            <legend><h2>Modifier un employÃ©</h2></legend>
+            <legend><h2>Modifier un employé</h2></legend>
             <hr>
             </br>
             <div class="input-group flex-nowrap">
@@ -52,7 +44,6 @@
             <p class="${empty form.erreurs ? 'succes' : 'erreur'}">${form.resultat}</p>
         </fieldset>
     </form>
-
 </div>
 
 <%@ include file = "template/footer.jsp" %>

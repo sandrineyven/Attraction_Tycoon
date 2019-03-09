@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daoImpl;
 
 import beans.Shop;
@@ -17,10 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Sandrine
- */
 public class ShopDaoImpl implements ShopDao {
 
     private static final String SQL_SELECT_WITH_ID = "SELECT id_shop, name, type, id_zone FROM shop WHERE id_shop = ?";
@@ -146,7 +137,6 @@ public class ShopDaoImpl implements ShopDao {
     public void delete(int id) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
-        ResultSet valeursAutoGenerees = null;
 
         try {
             connexion = daoFactory.getConnection();
@@ -158,7 +148,7 @@ public class ShopDaoImpl implements ShopDao {
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
-            fermeturesSilencieuses(valeursAutoGenerees, preparedStatement, connexion);
+            fermeturesSilencieuses(preparedStatement, connexion);
         }
 
     }
@@ -173,7 +163,6 @@ public class ShopDaoImpl implements ShopDao {
     public void update(Shop shop) throws IllegalArgumentException, DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
-        ResultSet valeursAutoGenerees = null;
 
         try {
             connexion = daoFactory.getConnection();
@@ -185,7 +174,7 @@ public class ShopDaoImpl implements ShopDao {
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
-            fermeturesSilencieuses(valeursAutoGenerees, preparedStatement, connexion);
+            fermeturesSilencieuses(preparedStatement, connexion);
         }
     }
 
@@ -269,7 +258,7 @@ public class ShopDaoImpl implements ShopDao {
                 }
             }
         }
-        System.out.println(query);
+
         try {
             connexion = daoFactory.getConnection();
             preparedStatement = initialisationRequetePreparee(connexion, query, false);
