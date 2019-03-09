@@ -225,7 +225,7 @@ public class ShopDaoImpl implements ShopDao {
         ResultSet resultSet = null;
         List<Shop> shops = new ArrayList<>();
 
-        String query = SQL_SELECT_WITH_SEARCH + "'" + search + "%' OR type LIKE " + "'" + search + "%'";
+        String query = SQL_SELECT_WITH_SEARCH + "'%" + search + "%' OR type LIKE " + "'%" + search + "%'";
         System.out.println(query);
         try {
             connexion = daoFactory.getConnection();
@@ -256,7 +256,7 @@ public class ShopDaoImpl implements ShopDao {
 
         String query = SQL_SELECT_ALL + " WHERE ";
         if (!search.trim().isEmpty()) {
-            query += "(name LIKE " + "'" + search + "%' OR type LIKE " + "'" + search + "%')";
+            query += "(name LIKE " + "'%" + search + "%' OR type LIKE " + "'%" + search + "%')";
             if (!zones.isEmpty()) {
                 query += " AND ";
             }

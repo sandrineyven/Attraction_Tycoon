@@ -10,6 +10,7 @@ import dao.DAOException;
 import daoImpl.DAOFactory;
 import dao.StaffDao;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -50,7 +50,6 @@ public class ShowStaffServlet extends HttpServlet {
 
         String id = request.getParameter("id");
         String del = request.getParameter("delete");
-        String upd = request.getParameter("update");
 
         if (null != id) {
 
@@ -72,5 +71,22 @@ public class ShowStaffServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String search = request.getParameter("search");
+        
+        List<Staff> staffs = new ArrayList<>();
+        
+        if(search.trim() != null){
+            try {
+               staffs = staffDao.findBySearch(search);
+            } catch (DAOException ex) {
+                Logger.getLogger(AffichageShopServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(null != staffs){
+                   request.setAttribute("staffs", staffs);
+            }
+        }
+        
+        this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
     }
+    
 }

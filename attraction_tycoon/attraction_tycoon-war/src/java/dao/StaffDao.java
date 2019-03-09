@@ -16,6 +16,7 @@ public interface StaffDao {
     void create( Staff staff ) throws DAOException;
     Staff findById( int id ) throws DAOException;
     List<Staff> findAll() throws DAOException; 
+     List<Staff> findBySearch(String search) throws DAOException; 
     void delete(int id) throws DAOException; 
     void update(Staff staff) throws DAOException; 
 }

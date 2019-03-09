@@ -27,6 +27,7 @@ public class StaffDaoImpl implements StaffDao {
     private static final String SQL_DELETE = "DELETE FROM staff WHERE id_staff = ?";
     private static final String SQL_UPDATE = "UPDATE staff SET name = ?, type = ?, salary = ?, labor_hours = ? WHERE id_staff = ?";
     private static final String SQL_SELECT_WITH_ID = "SELECT id_staff, id_user, name, type, salary, labor_hours,status FROM staff WHERE id_staff = ?";
+    private static final String SQL_SELECT_WITH_SEARCH = "SELECT * FROM staff WHERE name LIKE ";
     private static final String SQL_INSERT = "INSERT INTO staff (id_user, name, type, salary, labor_hours, status) VALUES (?, ?, ?, ?, ?, ?)";
     private final DAOFactory daoFactory;
 
@@ -43,7 +44,7 @@ public class StaffDaoImpl implements StaffDao {
         try {
             /* Récupération d'une connexion depuis la Factory */
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true,staff.getId_user(), staff.getName(), staff.getType(), staff.getSalary(), staff.getHours(), staff.getStatus());
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_INSERT, true, staff.getId_user(), staff.getName(), staff.getType(), staff.getSalary(), staff.getHours(), staff.getStatus());
             int statut = preparedStatement.executeUpdate();
             /* Analyse du statut retourné par la requête d'insertion */
             if (statut == 0) {
@@ -146,7 +147,7 @@ public class StaffDaoImpl implements StaffDao {
 
         try {
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee(connexion, SQL_UPDATE, true, staff.getName(), staff.getType(), staff.getSalary(),staff.getHours(),staff.getId());
+            preparedStatement = initialisationRequetePreparee(connexion, SQL_UPDATE, true, staff.getName(), staff.getType(), staff.getSalary(), staff.getHours(), staff.getId());
             int statut = preparedStatement.executeUpdate();
             if (statut == 0) {
                 throw new DAOException("Echec to update staff.");
@@ -168,5 +169,34 @@ public class StaffDaoImpl implements StaffDao {
         staff.setHours(resultSet.getInt("labor_hours"));
         staff.setStatus(resultSet.getString("status"));
         return staff;
+    }
+
+    @Override
+    public List<Staff> findBySearch(String search) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<Staff> staffs = new ArrayList<>();
+
+        String query = SQL_SELECT_WITH_SEARCH + "'%" + search + "%' OR type LIKE " + "'%" + search + "%'";
+        System.out.println(query);
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee(connexion, query, false);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Staff staff = map(resultSet);
+                if (staff != null) {
+                    staffs.add(staff);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        } finally {
+            fermeturesSilencieuses(resultSet, preparedStatement, connexion);
+        }
+
+        return staffs;
     }
 }
