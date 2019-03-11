@@ -25,21 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `carrousel`
+-- Structure de la table `carousel`
 --
 
-DROP TABLE IF EXISTS `carrousel`;
-CREATE TABLE IF NOT EXISTS `carrousel` (
-  `id_carrousel` int(11) NOT NULL  AUTO_INCREMENT,
+DROP TABLE IF EXISTS `carousel`;
+CREATE TABLE IF NOT EXISTS `carousel` (
+  `id_carousel` int(11) NOT NULL  AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `capacity_max` int(11) NOT NULL,
   `id_zone` int(11) NOT NULL,
   `is_open` char(1) NOT NULL,
-  `number_acces` int(11) NOT NULL,
+  `number_acces` int(11),
   `duration` time NOT NULL,
   `waiting_time` time NOT NULL,
   `state` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_carrousel`)
+  PRIMARY KEY (`id_carousel`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -82,10 +83,10 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Structure de la table `staff_caroussel`
 --
 
-DROP TABLE IF EXISTS `staff_caroussel`;
-CREATE TABLE IF NOT EXISTS `staff_caroussel` (
+DROP TABLE IF EXISTS `staff_carousel`;
+CREATE TABLE IF NOT EXISTS `staff_carousel` (
   `id_staff` int(11) NOT NULL,
-  `id_carrousel` int(11) NOT NULL,
+  `id_carousel` int(11) NOT NULL,
   `date` date NOT NULL,
   `hour_begining` time NOT NULL,
   `hour_ending` time NOT NULL
@@ -166,3 +167,6 @@ INSERT INTO shop (name,type,id_zone) VALUES ("Le Grill", "Restauration",2);
 INSERT INTO shop (name,type,id_zone) VALUES ("Sunday", "Souvenirs",2);
 INSERT INTO shop (name,type,id_zone) VALUES ("Glaces", "Stand",3);
 INSERT INTO shop (name,type,id_zone) VALUES ("Drinks", "Stand",5);
+
+INSERT INTO carousel (id_carousel, name, type, capacity_max, id_zone, is_open, number_acces, duration, waiting_time, state) VALUES
+(1, 'Project Euromir', 'Sensations', 15, 5, '1', 0, '00:03:00', '00:06:00', 'A');

@@ -13,7 +13,7 @@
 
     <div class ="container">
         <div class="shadow">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="index.jsp">
                     <img src="ressource/LOGO_TRANSPARENT.png" width="60" height="25" alt="5" class="d-inline-block align-top">
                 </a>
@@ -50,7 +50,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="<c:url value="/staff"/>">Staff</a>
                                     <a class="dropdown-item" href="<c:url value="/shops"/>">Shops</a>
-                                    <a class="dropdown-item" href="#">Maneges</a>
+                                    <a class="dropdown-item" href="<c:url value="/carousels"/>">Maneges</a>
                                     <a class="dropdown-item" href="<c:url value="/zones"/>">Zones</a>
                                 </div>
                             </li>

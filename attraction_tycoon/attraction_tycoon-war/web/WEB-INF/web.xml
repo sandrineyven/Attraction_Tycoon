@@ -5,29 +5,25 @@
         <servlet-class>servlets.AffichageShopServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ShowCarouselServlet</servlet-name>
+        <servlet-class>servlets.ShowCarouselServlet</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>CreateCarouselServlet</servlet-name>
+        <servlet-class>servlets.CreateCarouselServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>CreateShopServlet</servlet-name>
         <servlet-class>servlets.CreateShopServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>action</servlet-name>
-        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
-        <init-param>
-            <param-name>config</param-name>
-            <param-value>/WEB-INF/struts-config.xml</param-value>
-        </init-param>
-        <init-param>
-            <param-name>debug</param-name>
-            <param-value>2</param-value>
-        </init-param>
-        <init-param>
-            <param-name>detail</param-name>
-            <param-value>2</param-value>
-        </init-param>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
+ 
     <servlet>
         <servlet-name>UpdateShopServlet</servlet-name>
         <servlet-class>servlets.UpdateShopServlet</servlet-class>
+    </servlet>
+        <servlet>
+        <servlet-name>UpdateCarouselServlet</servlet-name>
+        <servlet-class>servlets.UpdateCarouselServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ShowStaffServlet</servlet-name>
@@ -70,12 +66,20 @@
         <url-pattern>/shops</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CreateShopServlet</servlet-name>
-        <url-pattern>/createShop</url-pattern>
+        <servlet-name>ShowCarouselServlet</servlet-name>
+        <url-pattern>/carousels</url-pattern>
+    </servlet-mapping>
+       <servlet-mapping>
+        <servlet-name>CreateCarouselServlet</servlet-name>
+        <url-pattern>/createCarousel</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>UpdateCarouselServlet</servlet-name>
+        <url-pattern>/updateCarousel</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>action</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <servlet-name>CreateShopServlet</servlet-name>
+        <url-pattern>/createShop</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateShopServlet</servlet-name>

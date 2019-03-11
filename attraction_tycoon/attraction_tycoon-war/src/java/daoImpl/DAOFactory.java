@@ -1,5 +1,6 @@
 package daoImpl;
 
+import dao.CarouselDao;
 import dao.DAOConfigurationException;
 import dao.ShopDao;
 import dao.StaffDao;
@@ -90,5 +91,9 @@ public class DAOFactory {
 
     public ZoneDao getZoneDao() {
         return new ZoneDaoImpl(this);
+    }
+    
+    public CarouselDao getCarouselDao() {
+        return new CarouselDaoImpl(this);
     }
 }
