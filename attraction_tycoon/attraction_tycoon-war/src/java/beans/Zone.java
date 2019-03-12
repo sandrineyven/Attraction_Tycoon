@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Zone implements Serializable {
-    
+
     private long id;
-    
+
     private String name;
-    
+
     private List<Shop> shopList;
+
+    private List<Carousel> carouselList;
 
     public long getId() {
         return id;
@@ -34,4 +36,14 @@ public class Zone implements Serializable {
     public void setShopList(List<Shop> shopList) {
         this.shopList = shopList;
     }
+
+    public List<Carousel> getCarouselList() {
+        return carouselList;
+    }
+
+    public void setCarouselList(List<Carousel> carouselList) {
+        this.carouselList = carouselList;
+    }
+    
+    
 }
