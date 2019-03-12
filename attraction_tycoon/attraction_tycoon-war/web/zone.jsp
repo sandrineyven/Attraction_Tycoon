@@ -10,7 +10,6 @@
                 <th scope="col">#ID</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Boutiques</th>
-                <th scope="col">Manèges</th>
             </tr>
         </thead>
         <form method="get" action="zone">
@@ -26,17 +25,6 @@
                                     <form class="form-inline my-2 my-lg-0" >
                                         <li><a href="<c:url value="/shops?id=${shop.id}"/>">
                                                 <c:out value="${shop.name}" />
-                                            </a></li>
-                                    </form>
-                                </c:forEach>
-                            </ul>
-                        </td>
-                        <td>
-                            <ul>
-                                <c:forEach var="carousel" items="${zone.carouselList}">
-                                    <form class="form-inline my-2 my-lg-0" >
-                                        <li><a href="<c:url value="/carousels?id=${carousel.id}"/>">
-                                                <c:out value="${carousel.name}" />
                                             </a></li>
                                     </form>
                                 </c:forEach>

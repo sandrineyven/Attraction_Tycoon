@@ -1,6 +1,7 @@
 package servlets;
 
 import beans.Carousel;
+import beans.Carousel;
 import dao.DAOException;
 import daoImpl.DAOFactory;
 import dao.CarouselDao;
@@ -25,6 +26,7 @@ public class ShowCarouselServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+
         this.carouselDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getCarouselDao();
     }
 
