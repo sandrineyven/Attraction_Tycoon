@@ -33,13 +33,13 @@ CREATE TABLE IF NOT EXISTS `carousel` (
   `id_carousel` int(11) NOT NULL  AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
-  `capacity_max` int(11) NOT NULL,
-  `id_zone` int(11) NOT NULL,
-  `is_open` char(1) NOT NULL,
+  `capacity_max` int(11),
+  `id_zone` int(11),
+  `is_open` char(1),
   `number_acces` int(11),
-  `duration` time NOT NULL,
-  `waiting_time` time NOT NULL,
-  `state` varchar(255) NOT NULL,
+  `duration` int(11),
+  `waiting_time` time,
+  `state` varchar(255),
   PRIMARY KEY (`id_carousel`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

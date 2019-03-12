@@ -131,7 +131,7 @@ public class CarouselDaoImpl implements CarouselDao {
         caroussel.setName(resultSet.getString("name"));
         caroussel.setType(resultSet.getString("type"));
         caroussel.setZone(resultSet.getInt("id_zone"));
-        caroussel.setDuration(resultSet.getTime("duration").getSeconds());
+        caroussel.setDuration(resultSet.getInt("duration"));
         caroussel.setCapacity(resultSet.getInt("capacity_max"));
         caroussel.setState(resultSet.getString("state"));
         caroussel.setIs_open(true);
