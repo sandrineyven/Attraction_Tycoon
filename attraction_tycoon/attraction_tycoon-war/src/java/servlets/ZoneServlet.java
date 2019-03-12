@@ -1,7 +1,9 @@
 package servlets;
 
+import beans.Carousel;
 import beans.Shop;
 import beans.Zone;
+import dao.CarouselDao;
 import dao.DAOException;
 import dao.ShopDao;
 import dao.ZoneDao;
@@ -23,16 +25,19 @@ public class ZoneServlet extends HttpServlet {
 
     private ZoneDao zoneDao;
     private ShopDao shopDao;
+    private CarouselDao carouselDao;
 
     @Override
     public void init() throws ServletException {
         this.zoneDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getZoneDao();
         this.shopDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getShopDao();
+        this.carouselDao = ((DAOFactory) getServletContext().getAttribute(CONF_DAO_FACTORY)).getCarouselDao();
     }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Shop> shops = new ArrayList<>();
+        List<Carousel> carousels = new ArrayList<>();
         List<Zone> zones = null;
         try {
             zones = zoneDao.findAll();
@@ -43,11 +48,15 @@ public class ZoneServlet extends HttpServlet {
             for (Zone zone : zones) {
                 try {
                     shops = shopDao.findByZone(zone.getId());
+                    carousels = carouselDao.findByZone(zone.getId());
                 } catch (DAOException ex) {
                     Logger.getLogger(ZoneServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 if (!shops.isEmpty()) {
                     zone.setShopList(shops);
+                }
+                if (!carousels.isEmpty()) {
+                    zone.setCarouselList(carousels);
                 }
             }
         }
