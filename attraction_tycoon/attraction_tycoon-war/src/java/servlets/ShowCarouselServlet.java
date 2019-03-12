@@ -41,21 +41,21 @@ public class ShowCarouselServlet extends HttpServlet {
         String del = request.getParameter("delete");
         String upd = request.getParameter("update");
 
-//        if (null != id && null == del && null == upd) {
-//            try {
-//                carouselUnique = carouselDao.findById(Integer.parseInt(id));
-//            } catch (DAOException ex) {
-//                Logger.getLogger(ShowCarouselServlet.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            carousels.add(carouselUnique);
-//        } else {
+        if (null != id && null == del && null == upd) {
+            try {
+                carouselUnique = carouselDao.findById(Integer.parseInt(id));
+            } catch (DAOException ex) {
+                Logger.getLogger(ShowCarouselServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            carousels.add(carouselUnique);
+        } else {
 
             try {
                 carousels = carouselDao.findAll();
             } catch (DAOException ex) {
                 Logger.getLogger(ShowCarouselServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-//        }
+       }
 
         session.setAttribute("carousels", carousels);
 

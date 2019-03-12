@@ -81,6 +81,16 @@
                             <td><c:out value="#" /></td>
                         </tr>
                     </c:forEach>
+                     <c:forEach var="carousel" items="${carousels}">
+                        <tr>
+                            <td><c:out value="Manèges" /></td>
+                            <td><c:out value="${carousel.id}" /></td>
+                            <td><a href="<c:url value="/carousels?id=${carousel.id}"/>">
+                                    <c:out value="${carousel.name}" />
+                                </a></td>
+                            <td><c:out value="${carousel.zone}" /></td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </form>
         </table>
