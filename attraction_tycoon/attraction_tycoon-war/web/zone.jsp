@@ -2,7 +2,8 @@
 
 
 <div class="container">
-    <h1>Zones</h1>
+    </br>
+    <h2>Zones</h2>
     <table class="table table-striped">
         <thead>
             <tr>

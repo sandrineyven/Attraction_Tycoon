@@ -1,6 +1,5 @@
 
 <%@ include file = "template/header.jsp" %>
-<%@ include file = "template/global.jsp" %>
 
 <style>
     .col-100vh {
