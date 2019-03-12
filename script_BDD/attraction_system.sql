@@ -169,4 +169,10 @@ INSERT INTO shop (name,type,id_zone) VALUES ("Glaces", "Stand",3);
 INSERT INTO shop (name,type,id_zone) VALUES ("Drinks", "Stand",5);
 
 INSERT INTO carousel (id_carousel, name, type, capacity_max, id_zone, is_open, number_acces, duration, waiting_time, state) VALUES
-(1, 'Project Euromir', 'Sensations', 15, 5, '1', 0, '00:03:00', '00:06:00', 'A');
+(1, 'Project Euromir', 'Sensations', 15, 5, '1', 0, 180, '00:06:00', 'A');
+INSERT INTO carousel (id_carousel, name, type, capacity_max, id_zone, is_open, number_acces, duration, waiting_time, state) VALUES
+(2, 'Les Tasses', 'Tout public', 30, 2, '1', 0, 240, '00:06:00', 'A');
+INSERT INTO carousel (id_carousel, name, type, capacity_max, id_zone, is_open, number_acces, duration, waiting_time, state) VALUES
+(3, 'Big Thunder Mountain', 'Sensations', 300, 4, '1', 0, 400, '00:06:00', 'A');
+INSERT INTO carousel (id_carousel, name, type, capacity_max, id_zone, is_open, number_acces, duration, waiting_time, state) VALUES
+(4, 'It is a small wordl', 'Enfants', 8, 5, '1', 0, 900, '00:06:00', 'A');
